@@ -1,4 +1,5 @@
 class AuthenticationController < ApplicationController
+    skip_before_action :require_login, only: [:login, :auto_login]
 
     def login
        user = User.find_by(email: params[:email])
@@ -6,7 +7,6 @@ class AuthenticationController < ApplicationController
         render json: { error: "Invalid username"}, status: :unauthorized
        else
         if user.authenticate(params[:password])
-            # secret_key = Rails.application.secrets.secret_key_base[0]
             token = JWT.encode({
                 user_id: user.id,
                 email: user.email
@@ -20,7 +20,7 @@ class AuthenticationController < ApplicationController
 
     def auto_login
         if session_user
-            binding.pry
+            
             render json: session_user
         else
             render json: {errors: 'No User Logged In'}

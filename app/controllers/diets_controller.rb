@@ -16,7 +16,6 @@ class DietsController < ApplicationController
   # POST /diets
   def create
     @diet = Diet.new(diet_params)
-
     if @diet.save
       render json: @diet, status: :created, location: @diet
     else
@@ -46,6 +45,6 @@ class DietsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def diet_params
-      params.require(:diet).permit(:goal, :start_date, :end_date, :target_weight, :user_id)
+      params.require(:diet).permit(:goal, :start_date, :end_date, :target_weight, :user_weights_attributes => [:weight, :user_id])
     end
 end

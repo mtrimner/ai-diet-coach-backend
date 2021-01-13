@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_weights
   resources :diets
   resources :users, only: [:create, :update]
   post "/login", to: "authentication#login"

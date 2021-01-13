@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      Diet.create(user_id: user.id)
       payload = {user_id: user.id, email: user.email}
       token = JWT.encode(payload, ENV['SECRET_KEY'])
       render json:  {user: user, token: token}, status: :created
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+   
     if @user.update(user_params)
       render json: @user
     else

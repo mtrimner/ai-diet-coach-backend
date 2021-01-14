@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/macros", to: "macro_params#macros"
   resources :user_weights
   resources :diets
   resources :users, only: [:create, :update]

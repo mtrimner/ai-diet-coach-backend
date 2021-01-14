@@ -45,6 +45,6 @@ class DietsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def diet_params
-      params.require(:diet).permit(:goal, :start_date, :end_date, :target_weight, :user_weights_attributes => [:weight, :user_id])
+      params.require(:diet).permit(:goal, :activity_level, :start_date, :end_date, :meals_per_day, :target_weight, :user_weights_attributes => [:weight, :user_id])
     end
 end

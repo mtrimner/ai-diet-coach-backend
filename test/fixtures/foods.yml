@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  serving_size: 1
+  adjusted_serving_size: 1
+  protein: 1
+  adjusted_protein: 1
+  protein_consumed: 1
+  carbs: 1
+  adjusted_carbs: 1
+  carbs_consumed: 1
+  fat: 1
+  adjusted_fat: 1
+  fat_consumed: 1
+  calories: 1
+  adjusted_calories: 1
+  calories_consumed: 1
+  meal: one
+
+two:
+  name: MyString
+  serving_size: 1
+  adjusted_serving_size: 1
+  protein: 1
+  adjusted_protein: 1
+  protein_consumed: 1
+  carbs: 1
+  adjusted_carbs: 1
+  carbs_consumed: 1
+  fat: 1
+  adjusted_fat: 1
+  fat_consumed: 1
+  calories: 1
+  adjusted_calories: 1
+  calories_consumed: 1
+  meal: two

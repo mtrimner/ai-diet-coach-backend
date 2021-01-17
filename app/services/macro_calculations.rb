@@ -12,7 +12,8 @@ class MacroCalculations
             protein: protein,
             carbs: carbs,
             fat: fat
-        }
+        },
+        meals_per_day: @user.diet.meals_per_day
     }
     end
 

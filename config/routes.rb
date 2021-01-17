@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :foods
+  resources :meals
   get "/macros", to: "macro_params#macros"
   resources :user_weights
   resources :diets

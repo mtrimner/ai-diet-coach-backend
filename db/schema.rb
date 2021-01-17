@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_022713) do
+ActiveRecord::Schema.define(version: 2021_01_17_194747) do
 
   create_table "diets", force: :cascade do |t|
     t.string "goal"
@@ -23,6 +23,39 @@ ActiveRecord::Schema.define(version: 2021_01_14_022713) do
     t.string "activity_level"
     t.integer "meals_per_day"
     t.index ["user_id"], name: "index_diets_on_user_id"
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string "name"
+    t.integer "serving_size"
+    t.integer "adjusted_serving_size"
+    t.integer "protein"
+    t.integer "adjusted_protein"
+    t.integer "protein_consumed"
+    t.integer "carbs"
+    t.integer "adjusted_carbs"
+    t.integer "carbs_consumed"
+    t.integer "fat"
+    t.integer "adjusted_fat"
+    t.integer "fat_consumed"
+    t.integer "calories"
+    t.integer "adjusted_calories"
+    t.integer "calories_consumed"
+    t.integer "meal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_id"], name: "index_foods_on_meal_id"
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "calories"
+    t.integer "carbs"
+    t.integer "protein"
+    t.integer "fat"
+    t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
   create_table "user_weights", force: :cascade do |t|
@@ -47,6 +80,8 @@ ActiveRecord::Schema.define(version: 2021_01_14_022713) do
   end
 
   add_foreign_key "diets", "users"
+  add_foreign_key "foods", "meals"
+  add_foreign_key "meals", "users"
   add_foreign_key "user_weights", "diets"
   add_foreign_key "user_weights", "users"
 end

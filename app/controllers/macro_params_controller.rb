@@ -5,7 +5,6 @@ class MacroParamsController < ApplicationController
 
     tdee = TdeeCalculator.new(@user).calculate_tdee
     macros = MacroCalculations.new(@user, tdee).macro_calculation
-    
     render json: macros.to_json
   end
 end

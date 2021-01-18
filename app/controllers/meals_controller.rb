@@ -15,6 +15,7 @@ class MealsController < ApplicationController
 
   # POST /meals
   def create
+    binding.pry
     @meal = Meal.new(meal_params)
 
     if @meal.save
@@ -46,6 +47,6 @@ class MealsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def meal_params
-      params.require(:meal).permit(:user_id, :carbs, :fat, :protein, :calories :foods_attributes => [:])
+      params.require(:meal).permit(:user_id, :calorie_goal, :fat_goal, :carb_goal, :protein_goal, :carbs_consumed, :fat_consumed, :protein_consumed, :calories_consumed, :foods_attributes => [:name, :serving_size, :adjusted_serving_size, :protein, :adjusted_protein, :protein_consumed, :carbs, :adjusted_carbs, :carbs_consumed, :fat, :adjusted_fat, :fat_consumed, :calories, :adjusted_calories, :calories_consumed, :meal_id])
     end
 end

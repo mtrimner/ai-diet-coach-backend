@@ -3,9 +3,24 @@ class MealsController < ApplicationController
 
   # GET /meals
   def index
-    @meals = Meal.all
+    date = Date.parse()
+
+    @meals = Meal.where(created_at: date.midnight..date.end_of_day)
 
     render json: @meals
+  end
+
+  def date
+
+    
+    date = Time.at((params[:date].to_i)/(1000))
+    
+ 
+    @meals = Meal.where(created_at: date.all_day, user_id: @user.id)
+  
+    render json: MealSerializer.new(@meals).to_serialized_json
+
+
   end
 
   # GET /meals/1
@@ -15,7 +30,7 @@ class MealsController < ApplicationController
 
   # POST /meals
   def create
-    binding.pry
+    
     @meal = Meal.new(meal_params)
 
     if @meal.save

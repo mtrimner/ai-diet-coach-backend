@@ -3,8 +3,7 @@ class UserWeightsController < ApplicationController
 
   # GET /user_weights
   def index
-    @user_weights = UserWeight.all
-
+    @user_weights = UserWeight.where(user_id: @user.id)
     render json: @user_weights
   end
 

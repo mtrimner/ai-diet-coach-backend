@@ -15,9 +15,9 @@ class UserWeightsController < ApplicationController
   # POST /user_weights
   def create
     @user_weight = UserWeight.new(user_weight_params)
-binding.pry
+
     if @user_weight.save
-      binding.pry
+   
       render json: @user_weight, status: :created, location: @user_weight
     else
       render json: @user_weight.errors, status: :unprocessable_entity
